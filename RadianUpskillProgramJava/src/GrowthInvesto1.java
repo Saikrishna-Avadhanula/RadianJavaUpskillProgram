@@ -9,19 +9,30 @@ public class GrowthInvesto1 extends InvestoCategories implements InvestoUtils{
 	
 	public GrowthInvesto1() { 
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 
 	@Override
 	public void LongTermPlan() {
 		try {
+			interestPercent = (float)20.45;
+			boolean i=true;
+			int count=0;
 			double premium;
-			interestPercent = (float) 20.0;
 			System.out.println("Long Term Plan selected.. Note Tenure Period \nMaximum tunure period <=30years \nMinimum trnure period =15years \n Please enter the Tenure");
 			Scanner sc = new Scanner(System.in);
 			this.tenure = sc.nextInt();
-			getQuote(this.tenure, salary, interestPercent);
+			while(i){
+				if(sc.nextInt() < 30 && sc.nextInt() >= 15) {
+					this.tenure = sc.nextInt();	
+					getQuote(this.tenure, salary, interestPercent);
+					i=false;}
+				else{
+					System.out.println("Tenure period should be between 15Yrs - 30Yrs");
+					count++;}
+					if(count==3){break;}
+				}
 		}catch(Exception e){
 			System.out.println(e.getStackTrace());
 			System.out.println(e.getMessage());
