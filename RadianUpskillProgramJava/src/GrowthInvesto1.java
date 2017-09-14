@@ -16,12 +16,12 @@ public class GrowthInvesto1 extends InvestoCategories implements InvestoUtils{
 	@Override
 	public void LongTermPlan() {
 		try {
-		double premium;
-		System.out.println("Long Term Plan selected.. Note Tenure Period \nMaximum tunure period <=30years \nMinimum trnure period =15years \n Please enter the Tenure");
-		Scanner sc = new Scanner(System.in);
-		this.tenure = sc.nextInt();
-		premium= getQuote(tenure);
-		System.out.printf("Total Premium : %f", premium);
+			double premium;
+			interestPercent = (float) 20.0;
+			System.out.println("Long Term Plan selected.. Note Tenure Period \nMaximum tunure period <=30years \nMinimum trnure period =15years \n Please enter the Tenure");
+			Scanner sc = new Scanner(System.in);
+			this.tenure = sc.nextInt();
+			getQuote(this.tenure, salary, interestPercent);
 		}catch(Exception e){
 			System.out.println(e.getStackTrace());
 			System.out.println(e.getMessage());
@@ -32,8 +32,8 @@ public class GrowthInvesto1 extends InvestoCategories implements InvestoUtils{
 
 	@Override
 public void ShortTermPlan() {
-	interestPercent = (float) 5.45;
 		try{
+			interestPercent = (float)5.45;
 			boolean i=true;
 			int count=0;
 			double premium;
